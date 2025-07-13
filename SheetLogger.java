@@ -15,7 +15,7 @@ import java.util.List;
 
 public class SheetLogger {
     private static final String APPLICATION_NAME = "BitRecord";
-    private static final String SPREADSHEET_ID = "見せらせない😢";//
+    private static final String SPREADSHEET_ID = "見せらせない😢 ....の部分";//https://docs.google.com/spreadsheets/d/..../edit?gid=0#gid=0
     private static final String RANGE = "'シート1'!A2"; 
 
     public static void appendLog(int trialCount, int secondsElapsed) throws IOException, GeneralSecurityException {
@@ -49,7 +49,7 @@ public class SheetLogger {
     }
 
     private static Sheets getSheetsService() throws IOException, GeneralSecurityException {
-        FileInputStream inputStream = new FileInputStream("見せらせない😢"); 
+        FileInputStream inputStream = new FileInputStream("見せらせない😢");//GoogleサービスアカウントのJSONファイルをダウンロードしてコピペ
         var credentials = ServiceAccountCredentials
                 .fromStream(inputStream)
                 .createScoped(List.of(SheetsScopes.SPREADSHEETS));
