@@ -15,8 +15,8 @@ import java.util.List;
 
 public class SheetLogger {
     private static final String APPLICATION_NAME = "BitRecord";
-    private static final String SPREADSHEET_ID = "1eQwwytxTAcVlbWNdYouTW2TpRgPbRhWPeLQa4a5tqpY";
-    private static final String RANGE = "'シート1'!A2"; // 書き込むシート名を合わせる
+    private static final String SPREADSHEET_ID = "見せらせない😢";//
+    private static final String RANGE = "'シート1'!A2"; 
 
     public static void appendLog(int trialCount, int secondsElapsed) throws IOException, GeneralSecurityException {
         Sheets service = getSheetsService();
@@ -49,7 +49,7 @@ public class SheetLogger {
     }
 
     private static Sheets getSheetsService() throws IOException, GeneralSecurityException {
-        FileInputStream inputStream = new FileInputStream("bitgame/bit-record-ad710b9c98c2.json"); // jsonファイルの正確なパス
+        FileInputStream inputStream = new FileInputStream("見せらせない😢"); 
         var credentials = ServiceAccountCredentials
                 .fromStream(inputStream)
                 .createScoped(List.of(SheetsScopes.SPREADSHEETS));
@@ -92,7 +92,7 @@ public class SheetLogger {
         if (times.getValues() != null) {
             for (List<Object> row : times.getValues()) {
                 try {
-                    String value = row.get(0).toString(); // 例: 1分23秒
+                    String value = row.get(0).toString(); 
                     int min = value.indexOf("分");
                     int sec = value.indexOf("秒");
                     int m = Integer.parseInt(value.substring(0, min));
@@ -105,7 +105,7 @@ public class SheetLogger {
             }
         }
 
-        // 書き込むデータ（D1とE1に）
+        // 書き込むデータ（D2とE2に）
         String minTrialStr = minTrial + "回";
         String minTimeStr = String.format("%d分%d秒", minSeconds / 60, minSeconds % 60);
 
@@ -130,8 +130,8 @@ public class SheetLogger {
         String time = "未記録";
 
         if (values != null && !values.isEmpty() && values.get(0).size() >= 2) {
-            trial = values.get(0).get(0).toString(); // D1
-            time = values.get(0).get(1).toString(); // E1
+            trial = values.get(0).get(0).toString(); 
+            time = values.get(0).get(1).toString(); 
         }
 
         return new String[] { trial, time };
